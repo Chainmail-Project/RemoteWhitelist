@@ -1,0 +1,6 @@
+{
+    "name": "Remote Whitelist",
+    "developer": "nint8835",
+    "version": "1.0.0",
+    "remote_manifest": "https://raw.githubusercontent.com/Chainmail-Project/RemoteWhitelist/master/plugin.json"
+}
