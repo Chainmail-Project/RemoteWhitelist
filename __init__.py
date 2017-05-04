@@ -17,7 +17,8 @@ class RemoteWhitelist(ChainmailPlugin):
         if not os.path.isfile(config_path):
             self.config = {
                 "api_url": "http://localhost:8796",
-                "kick_message": "You are not whitelisted on this server."
+                "kick_message": "You are not whitelisted on this server.",
+                "api_key": ""
             }
             with open(config_path, "w") as f:
                 json.dump(self.config, f, sort_keys=True, indent=4)
@@ -30,7 +31,8 @@ class RemoteWhitelist(ChainmailPlugin):
     def check_player_whitelisted(self, player: Player) -> bool:
         try:
             resp = requests.get(self.config["api_url"] + "/auth", params={
-                "uuid": player.uuid
+                "uuid": player.uuid,
+                "api_key": self.config["api_key"]
             }).json()
             return resp.get("whitelisted", True)
 
